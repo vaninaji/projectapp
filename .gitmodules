@@ -1,0 +1,3 @@
+[submodule "projectap"]
+	path = projectap
+	url = https://github.com/vaninaji/projectapp.git
