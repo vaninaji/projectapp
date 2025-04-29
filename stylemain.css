@@ -18,7 +18,9 @@ body {
     height: 100px;
     background-color: #ffe484;
     filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.2));
-     
+    animation: slideDown 1.2s ease forwards;
+    transform: translateY(-100%); 
+  
 }
 
 .logo {
@@ -240,3 +242,12 @@ img{
     100% { transform: translateX(0) rotate(0deg) scale(1);
     opacity: 1;}
 }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
