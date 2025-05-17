@@ -13,7 +13,7 @@
   </head>
 
 <body>
-  <script src="script.js"></script>
+  <script src="scriptindex.js"></script>
 
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'936109367f043144',t:'MTc0NTYxNzYxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
     
@@ -30,12 +30,12 @@
       </div>
 
       <div class = "sales">
-        
+
         <!-- Food Cards -->
-      <div class="food-card" id="burger-card">
+      <div class="food-card" id="burger-card" onclick="goToItem('burger')">
         <div class="card-content">
           <div class="food-image-container">
-            <img src="/api/placeholder/250/180" alt="Burger" class="food-image">
+            <img src="src/burgercard.png" alt="Burger" class="food-image">
           </div>
           <div class="price-tag">
             <span>BURGER 54 DHS</span>
@@ -43,10 +43,10 @@
         </div>
       </div>
 
-      <div class="food-card" id="pizza-card">
+      <div class="food-card" id="pizza-card" onclick="goToItem('pizza')">
         <div class="card-content">
           <div class="food-image-container">
-            <img src="/api/placeholder/250/180" alt="Pizza" class="food-image">
+            <img src="src/pizzacard.png" alt="Pizza" class="food-image">
           </div>
           <div class="price-tag">
             <span>PIZZA 30 DHS</span>
@@ -54,10 +54,10 @@
         </div>
       </div>
 
-      <div class="food-card" id="tacos-card">
+      <div class="food-card" id="tacos-card" onclick="goToItem('taco')">
         <div class="card-content">
           <div class="food-image-container">
-            <img src="/api/placeholder/250/180" alt="Tacos" class="food-image">
+            <img src="src/tacocard.png" alt="Tacos" class="food-image">
           </div>
           <div class="price-tag">
             <span>TACOS 47 DHS</span>
@@ -67,5 +67,13 @@
           
       </div>
     </section>
+
+    <script>
+      function goToItem(id) {
+        window.location.href = `item.html?id=${id}`;
+      }
+    </script>
+
+    
 
 </body>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Item</title>
+  <script src="data.js"></script>
+  <script defer src="item.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <div class="bg-gray-300 p-4 flex justify-between items-center">
+      <div class="text-3xl font-bold text-orange-500">bite<span class="text-orange-600">.</span></div>
+      <div class="text-sm text-gray-600">food & beverage</div>
+      <div class="text-4xl text-white bg-gray-200 w-12 h-12 flex items-center justify-center rounded-full border-2 border-white">0</div>
+    </div>
+
+    <!-- Food Page -->
+    <div id="food-container"></div>
+  </div>
+</body>
+</html>
