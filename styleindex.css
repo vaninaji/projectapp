@@ -43,22 +43,23 @@
   .hot-sale-icon {
     position: absolute;
     top: 172px;
-    left: 1040px;
+    left: 1140px;
+    z-index: 1111;
   }
   
   .offer-section {
-      width: 100%;
-      margin-top: 40px;
-      text-align: center;
-    }
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+  }
     
-    .offer-text h1 {
-      font-family: 'Telegraf', sans-serif;
-      font-size: 50px;
-      font-weight: bold;
-      color: black;
-      margin-bottom: 8px;
-    }
+  .offer-text h1 {
+    font-family: 'Telegraf', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+  }
     
     .offer-text p {
       font-family: 'Telegraf', sans-serif;
@@ -67,4 +68,74 @@
       color: black;
     }
 
+     /* Food Cards Styling */
+    .sales {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+        
+    .food-card {
+      width: 250px;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+        
+    .food-card:hover {
+          transform: scale(1.05) translateY(-10px);
+        }
+        
+    .food-card.clicked {
+          animation: click-animation 0.3s ease;
+        }
+        
+    @keyframes click-animation {
+      0% { transform: scale(1.05) translateY(-10px); }
+      50% { transform: scale(0.95) translateY(-5px); }
+      75% { transform: scale(1.05) translateY(-12px); }
+      100% { transform: scale(1.05) translateY(-10px); }
+    }
+        
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+        
+    .food-image-container {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+        
+    .food-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+        
+    .price-tag {
+      width: 80%;
+      background-color: #e6c089;
+      color: black;
+      font-weight: bold;
+      padding: 10px;
+      margin: 15px 0;
+      border-radius: 5px;
+      text-align: center;
+    }
+        
+        
   
