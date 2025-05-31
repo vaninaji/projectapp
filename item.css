@@ -1,0 +1,76 @@
+.top-nav {
+    width: 100%;
+    height: 126px;
+    background-color: #cfc9c9;
+    position: fixed;
+    top: -126px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+
+  }
+  
+  .logo {
+    position: absolute;
+    top: -105px;
+    left: -50px;
+    height: auto;
+    width: 330px
+  }
+  
+  .cart-btn {
+    position: absolute;
+    top: 11px;
+    left: 1300px;
+    height: auto;
+  }
+
+  .show {
+    transform: translateY(126px);
+    
+}
+
+/* Make the hero section bigger */
+.hero-section {
+    height: 500px; /* Increase from 384px (h-96) */
+    background-image: url('src/itembg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-in-diagonal {
+    transform: translateX(100px) translateY(-100px);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-in-diagonal.animate {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+}
+
+/* Special handling for the rotated rectangle - preserve rotation during animation */
+.slide-in-diagonal.rounded-full {
+    transform: rotate(-45deg) translateX(100px) translateY(-100px);
+}
+
+.slide-in-diagonal.rounded-full.animate {
+    transform: rotate(-45deg) translateX(0) translateY(0);
+}
+
+.slide-up {
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-up.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Stagger the animations */
+.slide-up.delay-1 { transition-delay: 0.2s; }
+.slide-up.delay-2 { transition-delay: 0.4s; }
+.slide-up.delay-3 { transition-delay: 0.6s; }
+.slide-up.delay-4 { transition-delay: 0.8s; }

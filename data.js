@@ -8,12 +8,12 @@ const items = {
       accentColor: "#F5A623"
     },
     pizza: {
-      name: "Pepperoni Pizza",
+      name: "Margarita Pizza",
       description: "Cheesy pepperoni pizza with a golden crust and savory tomato sauce.",
       price: 65,
       currency: "DHS",
       image: "src/pizzacard.png",
-      accentColor: "#E63946"
+      accentColor: "#D22308"
     },
     taco: {
       name: "Spicy Beef Taco",
