@@ -25,6 +25,7 @@ This project was originally assigned as a group effort. Contributions include:
 * HTML5
 * CSS3
 * Vanilla JS
+* Figma (for layout)
 
 ## Here's how to use this!
 
