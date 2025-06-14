@@ -32,20 +32,20 @@
             
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                window.location.href = 'index.html';
+                window.location.href = 'main.html';
             }
         }, 1000);
 
         // Optional: Allow users to click anywhere to go back immediately
         document.addEventListener('click', () => {
             clearInterval(countdown);
-            window.location.href = 'index.html';
+            window.location.href = 'main.html';
         });
 
         // Optional: Allow users to press any key to go back immediately
         document.addEventListener('keydown', () => {
             clearInterval(countdown);
-            window.location.href = 'index.html';
+            window.location.href = 'main.html';
         });
     </script>
 </body>
