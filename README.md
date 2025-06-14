@@ -1,5 +1,3 @@
-WELCOME!!!
-
 
 # Food Delivery Web App
 
