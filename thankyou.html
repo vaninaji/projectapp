@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Order Confirmed</title>
+    <link rel="stylesheet" href="stylethankyou.css">
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="left-image">
+            <img src="src/pizzabye.png" alt="Thank you" class="pizzabye-image">
+        </div>
+        
+        <div class="right-text">
+            <img src="src/thankyoutext.png" alt="Thank You Text" class="thank-you-text">
+        </div>
+    </div>
+
+    <div class="redirect-message">
+        Redirecting to menu in <span class="countdown" id="countdown">10</span> seconds...
+    </div>
+
+    <script>
+        // Countdown and redirect functionality
+        let timeLeft = 10;
+        const countdownElement = document.getElementById('countdown');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = 'index.html';
+            }
+        }, 1000);
+
+        // Optional: Allow users to click anywhere to go back immediately
+        document.addEventListener('click', () => {
+            clearInterval(countdown);
+            window.location.href = 'index.html';
+        });
+
+        // Optional: Allow users to press any key to go back immediately
+        document.addEventListener('keydown', () => {
+            clearInterval(countdown);
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

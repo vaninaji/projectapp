@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fffcfc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.thank-you-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1800px;
+    padding: 40px;
+    gap: 80px;
+}
+
+.left-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pizzabye-image {
+    width: 740px;
+    height: auto;
+    transform: translateX(-100vw);
+    animation: slideInFromLeft 1.5s ease-out forwards;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
+    padding-left: 40px;
+}
+
+.right-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thank-you-text {
+    width: 700px;
+    height: auto;
+    transform: translateY(100vh);
+    opacity: 0;
+    animation: slideInFromBottom 1.2s ease-out forwards;
+    animation-delay: 1s;
+    filter: drop-shadow(0px 5px 5px rgba(112, 112, 112, 0.15));
+    padding-bottom: 100px;
+}
+
+.redirect-message {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    color:#efae9a;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+    animation-delay: 3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.countdown {
+    font-weight: bold;
+    color: #E94E1B;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100vw);
+    }
+    70% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    70% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .thank-you-container {
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px;
+    }
+
+    .pizzabye-image,
+    .thank-you-text {
+        width: 300px;
+    }
+
+    .redirect-message {
+        bottom: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}

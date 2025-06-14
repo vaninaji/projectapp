@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Bite</title>
+    <link rel="stylesheet" href="stylecart.css">
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="src/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Menu</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <img src="src/cartbg.png" alt="" class="cart-bg-image">
+    <img src="cartbg.png" alt="" class="cart-bg-image right">
+
+    <div class="cart-container">
+        <div class="cart-header">
+            <h1>Your Cart</h1>
+            <p>Review your order before checkout</p>
+        </div>
+
+        <div id="cart-content">
+            <!-- Cart items will be populated here -->
+        </div>
+    </div>
+
+    <script>
+        // Updated cart rendering and management functions for cart.html
+
+let promoDiscount = 0;
+let promoApplied = '';
+
+function renderCart() {
+    console.log('Rendering cart...');
+    const cartContent = document.getElementById('cart-content');
+    
+    // Make sure cart manager is initialized
+    if (!window.cartManager) {
+        window.cartManager = new CartManager();
+    }
+    
+    const cartItems = window.cartManager.getCart();
+    console.log('Cart items to render:', cartItems);
+    
+    if (!cartItems || cartItems.length === 0) {
+        cartContent.innerHTML = `
+            <div class="empty-cart">
+                <h2>Your cart is empty</h2>
+                <p>Looks like you haven't added any items to your cart yet.</p>
+                <a href="index.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        `;
+        return;
+    }
+
+    const subtotal = cartItems.reduce((sum, item) => {
+        return sum + (parseFloat(item.price) * parseInt(item.quantity));
+    }, 0);
+    
+    const discount = subtotal * promoDiscount;
+    const total = subtotal - discount;
+
+    cartContent.innerHTML = `
+        <div class="cart-items">
+            ${cartItems.map((item, index) => {
+                const itemTotal = parseFloat(item.price) * parseInt(item.quantity);
+                return `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="item-image">
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-description">${item.description}</div>
+                            <div class="item-options">
+                                ${item.options && item.options.hasMenu ? 
+                                    `With menu: ${item.options.soda || 'Coke'}, ${item.options.fries || 'Regular'} Fries` : 
+                                    'No menu'
+                                }
+                                ${item.options && item.options.promoCode ? `<br>Promo: ${item.options.promoCode}` : ''}
+                            </div>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                        </div>
+                        <div class="item-price">${itemTotal} DHS</div>
+                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>${subtotal.toFixed(0)} DHS</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery Fee:</span>
+                <span>15 DHS</span>
+            </div>
+            ${promoApplied ? `
+                <div class="summary-row" style="color: #28a745;">
+                    <span>Discount (${promoApplied}):</span>
+                    <span>-${discount.toFixed(0)} DHS</span>
+                </div>
+            ` : ''}
+            
+            <div class="promo-section">
+                <div class="promo-input">
+                    <input type="text" id="promoCode" placeholder="Enter promo code" ${promoApplied ? 'disabled' : ''}>
+                    <button class="promo-btn" onclick="applyPromo()" ${promoApplied ? 'disabled' : ''}>${promoApplied ? 'Applied' : 'Apply'}</button>
+                </div>
+                <div id="promoMessage" class="promo-message"></div>
+            </div>
+
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span>${(total + 15).toFixed(0)} DHS</span>
+            </div>
+
+            <button class="checkout-btn" onclick="finishOrder()">
+                Finish Order
+            </button>
+        </div>
+    `;
+}
+
+function changeQuantity(itemIndex, change) {
+    console.log(`Changing quantity for item ${itemIndex} by ${change}`);
+    const cartItems = window.cartManager.getCart();
+    const item = cartItems[itemIndex];
+    
+    if (item) {
+        const newQuantity = parseInt(item.quantity) + change;
+        console.log(`New quantity: ${newQuantity}`);
+        
+        if (newQuantity <= 0) {
+            removeItem(itemIndex);
+        } else {
+            window.cartManager.updateQuantity(item.id, item.options, newQuantity);
+            renderCart();
+        }
+    }
+}
+
+function removeItem(itemIndex) {
+    console.log(`Removing item at index ${itemIndex}`);
+    const cartItems = window.cartManager.getCart();
+    const item = cartItems[itemIndex];
+    
+    if (item) {
+        window.cartManager.removeFromCart(item.id, item.options);
+        renderCart();
+    }
+}
+
+function applyPromo() {
+    const promoInput = document.getElementById('promoCode');
+    const promoMessage = document.getElementById('promoMessage');
+    const promoCode = promoInput.value.toUpperCase().trim();
+    
+    if (promoCode === 'SUMMER2025') {
+        promoDiscount = 0.2;
+        promoApplied = 'SUMMER2025';
+        promoMessage.innerHTML = '<span style="color: #28a745;">✓ Promo code applied! 20% discount added.</span>';
+        renderCart();
+    } else if (promoCode === 'WELCOME10') {
+        promoDiscount = 0.1;
+        promoApplied = 'WELCOME10';
+        promoMessage.innerHTML = '<span style="color: #28a745;">✓ Promo code applied! 10% discount added.</span>';
+        renderCart();
+    } else if (promoCode === '') {
+        promoMessage.innerHTML = '<span style="color: #666;">Please enter a promo code.</span>';
+    } else {
+        promoMessage.innerHTML = '<span style="color: #ff4757;">✗ Invalid promo code.</span>';
+    }
+}
+
+function finishOrder() {
+    // Show processing message
+    const button = document.querySelector('.checkout-btn');
+    if (button) {
+        const originalText = button.textContent;
+        button.textContent = 'Processing Order...';
+        button.disabled = true;
+        button.style.backgroundColor = '#6c757d';
+        
+        // Simulate order processing
+        setTimeout(() => {
+            // Clear the cart after order
+            window.cartManager.clearCart();
+            // Redirect to thank you page
+            window.location.href = 'thankyou.html';
+        }, 1500);
+    }
+}
+
+// Initialize cart on page load
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing cart...');
+    
+    // Make sure cart manager exists
+    if (!window.cartManager) {
+        window.cartManager = new CartManager();
+    }
+    
+    // Small delay to ensure everything is loaded
+    setTimeout(() => {
+        renderCart();
+    }, 100);
+});
+    </script>
+</body>
+</html>

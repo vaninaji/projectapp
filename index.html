@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Food delivery app</title>
-
-
     <link rel="stylesheet" href="styleindex.css">
-
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
   </head>
 
 <body>
   <script src="scriptindex.js"></script>
-
-  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'936109367f043144',t:'MTc0NTYxNzYxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
     
   <nav class="top-nav">
         <img src="src/top logo.png" alt="Logo" class="logo">
-        <img src="src/top cart btn.png" alt="Cart" class="cart-btn">
+        <img src="src/top cart btn.png" alt="Cart" class="cart-btn" onclick="goToCart()">
     </nav>
 
     <section class="offer-section">
@@ -49,7 +45,7 @@
             <img src="src/pizzacard.png" alt="Pizza" class="food-image">
           </div>
           <div class="price-tag">
-            <span>PIZZA 30 DHS</span>
+            <span>PIZZA 65 DHS</span>
           </div>
         </div>
       </div>
@@ -72,8 +68,11 @@
       function goToItem(id) {
         window.location.href = `item.html?id=${id}`;
       }
+      
+      function goToCart() {
+        window.location.href = 'cart.html';
+      }
     </script>
 
-    
-
 </body>
+</html>

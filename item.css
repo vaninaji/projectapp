@@ -74,3 +74,25 @@
 .slide-up.delay-2 { transition-delay: 0.4s; }
 .slide-up.delay-3 { transition-delay: 0.6s; }
 .slide-up.delay-4 { transition-delay: 0.8s; }
+
+.slide-in-veggie {
+    transform: translateX(-150px) translateY(-150px);
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.4s; /* Delay so it comes after the main elements */
+}
+
+.slide-in-veggie.animate {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+}
+
+#menuOptions {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#menuOptions.show {
+    max-height: 500px; /* Adjust as needed */
+}
