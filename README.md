@@ -15,7 +15,7 @@ This is a simple, front-end food delivery web application created as part of a g
 
 This project was originally assigned as a group effort. Contributions include:
 
-* **Development (HTML, CSS, JavaScript), animations, layout, cart system setup, design** ~ Hiba Gareg
+* **Development (HTML, CSS, JavaScript), animations, layout, cart system setup, overall design** ~ Hiba Gareg
 * [plz add ur contribution here] ~ [and your full name]
 * [plz add ur contribution here] ~ [and your full name]
 
