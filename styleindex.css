@@ -19,17 +19,19 @@
     
     .top-nav {
       width: 100%;
-      height: 126px;
+      height: 100px;
       background-color: #cfc9c9;
       position: relative;
+      padding: 20px 50px ;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
     }
     
     .logo {
-      position: absolute;
-      top: -105px;
-      left: -50px;
       height: auto;
-      width: 330px
+      width: 220px;
+      
     }
     
     .cart-btn {
@@ -39,7 +41,105 @@
       height: auto;
     }
   
-  
+    .cart-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+  }
+
+  .cart-icon {
+      width: 100px;
+      height: 86px;
+      border: 3.4px solid #ffffff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      background: #cfc9c9;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+  }
+
+  .cart-svg {
+      width: 76px;
+      height: 76px;
+      margin-top: 4px;
+      /* Cart icon stays in place on the right */
+  }
+
+  .cart-counter {
+      font-family: 'Telegraf', sans-serif;
+      position: absolute;
+      left: 8px;
+      background: #cfc9c9;
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      min-width: 18px;
+      height: 40px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0 4px;
+  }
+
+  /* Hover effects */
+  .cart-container:hover .cart-icon {
+      width: 150px;
+      border-radius: 25px;
+  }
+
+  .cart-container:hover .cart-counter {
+      opacity: 1;
+      transform: translateX(0);
+  }
+
+  /* Animation for when cart count updates */
+  .cart-counter.animate {
+      animation: bounce 0.6s ease;
+  }
+
+  @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0) translateX(0);
+      }
+      40% {
+          transform: translateY(-3px) translateX(0);
+      }
+      60% {
+          transform: translateY(-2px) translateX(0);
+      }
+  }
+
+  /* When hovered and animating */
+  .cart-container:hover .cart-counter.animate {
+      animation: bounceHover 0.6s ease;
+  }
+
+  @keyframes bounceHover {
+      0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0) translateX(0);
+          opacity: 1;
+      }
+      40% {
+          transform: translateY(-3px) translateX(0);
+          opacity: 1;
+      }
+      60% {
+          transform: translateY(-2px) translateX(0);
+          opacity: 1;
+      }
+  }
+
+
+
+
   .hot-sale-icon {
     position: absolute;
     top: 172px;

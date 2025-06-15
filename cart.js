@@ -149,3 +149,43 @@ if (!window.cartManager) {
     window.cartManager = new CartManager();
     console.log('Global cart manager created');
 }
+
+// Cart counter update functions
+function updateCartCounter() {
+    const counter = document.getElementById('cartCounter');
+    if (!counter) return;
+    
+    // Make sure cart manager is initialized
+    if (!window.cartManager) {
+        window.cartManager = new CartManager();
+    }
+    
+    const count = window.cartManager.getCartCount();
+    console.log('Updating cart counter to:', count);
+    
+    if (count > 0) {
+        counter.textContent = count > 99 ? '99+' : count.toString();
+        counter.classList.remove('hidden');
+        
+        // Add bounce animation
+        counter.classList.add('animate');
+        setTimeout(() => {
+            counter.classList.remove('animate');
+        }, 600);
+    } else {
+        counter.classList.add('hidden');
+    }
+}
+
+// Initialize cart counter on page load
+function initCartCounter() {
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+        updateCartCounter();
+    }, 100);
+}
+
+// Call this whenever the cart is modified
+function onCartUpdated() {
+    updateCartCounter();
+}

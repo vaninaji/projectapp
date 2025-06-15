@@ -8,14 +8,29 @@
     <link rel="stylesheet" href="styleindex.css">
     <script src="data.js"></script>
     <script src="cart.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FFPD1K770R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FFPD1K770R');
+</script>
   </head>
 
 <body>
   <script src="scriptindex.js"></script>
     
   <nav class="top-nav">
-        <img src="src/top logo.png" alt="Logo" class="logo">
-        <img src="src/top cart btn.png" alt="Cart" class="cart-btn" onclick="goToCart()">
+        <img src="src/logo.png" alt="Logo" class="logo" onclick="goToMain()">
+        <div class="cart-container">
+          <div class="cart-icon">
+              <img class="cart-svg" src="src/top cart btn.svg" alt="Shopping Cart" onclick="goToCart()"/>
+              <div class="cart-counter" id="cartCounter">0</div>
+          </div>
+      </div>
     </nav>
 
     <section class="offer-section">
@@ -72,6 +87,49 @@
       function goToCart() {
         window.location.href = 'cart.html';
       }
+
+      function goToMain() {
+        window.location.href = 'main.html';
+      }
+
+       // Initialize cart manager
+       window.cartManager = new CartManager();
+
+// Your existing cart counter functions (enhanced)
+function updateCartCounter() {
+    const counter = document.getElementById('cartCounter');
+    if (!counter) return;
+
+    // Make sure cart manager is initialized
+    if (!window.cartManager) {
+        window.cartManager = new CartManager();
+    }
+
+    const count = window.cartManager.getCartCount();
+    console.log('Updating cart counter to:', count);
+
+    // Update counter text
+    counter.textContent = count > 99 ? '99+' : count.toString();
+
+    // Add bounce animation
+    counter.classList.add('animate');
+    setTimeout(() => {
+        counter.classList.remove('animate');
+    }, 600);
+}
+
+// Initialize cart counter on page load
+function initCartCounter() {
+    setTimeout(() => {
+        updateCartCounter();
+    }, 100);
+}
+
+// Call this whenever the cart is modified
+function onCartUpdated() {
+    updateCartCounter();
+}
+
     </script>
 
 </body>

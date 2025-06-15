@@ -314,16 +314,15 @@ body {
     animation: cartSway 4s ease-in-out infinite;
 }
 
-.right {
+.cart-bg-image.right {
     left: auto;
-    right: 200px;
-    transform: translateY(-120%) scaleX(-1);
+    right: -320px;
+    transform: translateY(0%) scaleX(-1);
     animation: cartSwayRight 4s ease-in-out infinite;
-    opacity: 0.8;
-    pointer-events: none;
-    position: fixed;
+    top: 725px;
     width: 1000px;
 }
+
 
 
 @keyframes cartSway {

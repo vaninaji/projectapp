@@ -7,7 +7,7 @@ const item = items[id];
 
 // item not found
 if (!item) {
-    document.getElementById("food-container").innerHTML = "<p class='p-4'>Item not found.</p>";
+    document.getElementById("food-container").innerHTML = "<p class='p-4'>Item not found 0_o</p>";
     throw new Error("Item not found");
 }
 
@@ -238,6 +238,8 @@ function addToCart() {
     
     // Add to cart using cart manager
     window.cartManager.addToCart(cartItem);
+        // Update cart counter
+    onCartUpdated();
     
     // Show success message and redirect to menu
     const button = document.querySelector('button[onclick="addToCart()"]');

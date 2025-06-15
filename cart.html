@@ -11,7 +11,7 @@
 <body>
     <div class="navbar">
         <div class="logo">
-            <img src="src/logo.png" alt="Logo" class="logo">
+            <img src="src/logo.png" alt="Logo" class="logo" onclick="goToMain()">
         </div>
         <div class="nav-links">
             <a href="index.html">Menu</a>
@@ -21,7 +21,7 @@
     </div>
 
     <img src="src/cartbg.png" alt="" class="cart-bg-image">
-    <img src="cartbg.png" alt="" class="cart-bg-image right">
+    <img src="src/cartbg.png" alt="" class="cart-bg-image right">
 
     <div class="cart-container">
         <div class="cart-header">
@@ -150,6 +150,7 @@ function changeQuantity(itemIndex, change) {
         } else {
             window.cartManager.updateQuantity(item.id, item.options, newQuantity);
             renderCart();
+            onCartUpdated();
         }
     }
 }
@@ -162,6 +163,7 @@ function removeItem(itemIndex) {
     if (item) {
         window.cartManager.removeFromCart(item.id, item.options);
         renderCart();
+        onCartUpdated();
     }
 }
 
@@ -219,7 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         renderCart();
     }, 100);
+
+    initCartCounter();
 });
+
+function goToMain() {
+        window.location.href = 'main.html';
+      }
+
     </script>
 </body>
 </html>

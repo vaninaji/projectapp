@@ -39,9 +39,9 @@
 }
 
 .slide-in-diagonal {
-    transform: translateX(100px) translateY(-100px);
-    opacity: 0;
-    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(400px) translateY(-400px);
+    opacity: 1;
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .slide-in-diagonal.animate {
@@ -60,7 +60,7 @@
 
 .slide-up {
     transform: translateY(50px);
-    opacity: 0;
+    opacity: 1;
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -76,14 +76,14 @@
 .slide-up.delay-4 { transition-delay: 0.8s; }
 
 .slide-in-veggie {
-    transform: translateX(-150px) translateY(-150px);
-    opacity: 0;
+    transform: translateX(-500px) translateY(-500px);
+    opacity: 1;
     transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition-delay: 0.4s; /* Delay so it comes after the main elements */
 }
 
 .slide-in-veggie.animate {
-    transform: translateX(0) translateY(0);
+    transform: translateX(-80px) translateY(-80px);
     opacity: 1;
 }
 

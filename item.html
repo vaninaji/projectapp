@@ -14,7 +14,7 @@
   <div class="min-h-screen flex flex-col">
     <!-- Header -->
     <nav class="top-nav">
-      <img src="src/top logo.png" alt="Logo" class="logo">
+      <img src="src/top logo.png" alt="Logo" class="logo" onclick="goToMain()">
       <img src="src/top cart btn.png" alt="Cart" class="cart-btn">
     </nav>
 
@@ -22,6 +22,10 @@
     <div id="food-container"></div>
   </div>
   
-  <script src="item.js"></script>
+  <script src="item.js">
+    function goToMain() {
+        window.location.href = 'main.html';
+      }
+  </script>
 </body>
 </html>
